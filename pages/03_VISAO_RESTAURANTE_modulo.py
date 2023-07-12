@@ -228,11 +228,11 @@ with tab1:
 
         with col2:
             avg_distance = distance(df_final,fig=False)
-            col2.metric('Distância média das entregas', avg_distance)
+            col2.metric('Distância média das entregas (KM)', avg_distance)
 
         with col3:
             media_festival = avg_std_time_delivery(df_final,op='avg',festival='Yes')
-            col3.metric('Tempo média das entregas com festival', media_festival)
+            col3.metric('Tempo médio das entregas com festival (min)', media_festival)
 
         with col4:
             std_festival = avg_std_time_delivery(df_final, op='std',festival='Yes')
@@ -240,7 +240,7 @@ with tab1:
 
         with col5:
             mean_time_no_festival = avg_std_time_delivery(df_final, op='avg', festival='No')
-            col5.metric('Tempo média das entregas sem festival',mean_time_no_festival)
+            col5.metric('Tempo médio das entregas sem festival (min)',mean_time_no_festival)
 
         with col6:
             std_time_no_festival = avg_std_time_delivery(df_final, op='std', festival='No')

@@ -65,8 +65,12 @@ def country_maps(df_final):
         ['City', 'Road_traffic_density']).median().reset_index()
     mapa = folium.Map()
     for index, info in base_graph_map.iterrows():
-        folium.Marker([info['Delivery_location_latitude'], info['Delivery_location_longitude']],
-                     popup=info[['City', 'Road_traffic_density']]).add_to(mapa)
+        if info['Delivery_location_latitude'] > 10.000:
+            folium.Marker([info['Delivery_location_latitude'], info['Delivery_location_longitude']],
+                         popup=info[['City', 'Road_traffic_density']]).add_to(mapa)
+            #pus esse elif p a distancia media existir dentro da india, se não saiíra da india.
+        else:
+            pass
 
     #TODO: Essa função traz regiões por médias de latitude x longitude e o pop-up mostra as mesmas
     #TODO: com as infos de cidade, a densidade e a ''posição do DF''
@@ -75,7 +79,7 @@ def country_maps(df_final):
     #TODO: concentraçaõ de transito do lugar e a cidade propriamente dita.
     #TODO: e sua posição do DF tbm aparece.
 
-
+    #st.dataframe(base_graph_map)
     folium_static(mapa, width= 1024,height=600)
 
 #FUNÇÃO AUXILIAR QUE LIMPA ESPAÇOS
